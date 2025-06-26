@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis</title>
+
+  <link rel="stylesheet" href="syntax-highlight.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <div class="title-block">
+    <div class="title">Python for Data Analysis</div>
+    <div class="subtitle">Immutability, Identity, and Basic Arithmetics</div>
+    <div class="instructor">Dr. Aamir Alaud Din</div>
+    <div class="date">June 18, 2025</div>
+  </div>
+
+  <h1>Table of Contents</h1>
+
+  <h2>1. Recap</h2>
+  <h2>2. Objectives</h2>
+  <h2>3. The Why Section</h2>
+  <h2>4. Immutability and Identity</h2>
+  <h2>5. Basic Arithmetics</h2>
+  <h2>6. Strings</h2>
+  <h2>7. Lists</h2>
+  <h2>8. Summary</h2>
+  <h2>Exercises</h2>
+
+  <h1>Recap</h1>
+
+  <ul>
+    <li>The symbol <code>=</code> is not equality symbol, but assignment operator which assigns the output of right side to the variable on the left side.</li>
+    <li>Variable names cannot be defined randomly but there are rules for naming variables and the names must be logical.</li>
+    <li>The variables can be printed using the <code>print</code> function.</li>
+    <li>The simplest method of printing is by giving variable name as input to the <code>print</code> function within paranthesis.</li>
+    <li>The mastery of printing lies in understanding the f-string format completely.</li>
+    <li>Concatenation is the art of printing different data types together and
+    monospace fonts play a vital role in controlling the printing.</li>
+  </ul>
+
+  <h1>Objectives</h1>
+  <p>After <span style="color: green;">taking this lecture</span> and <span style="color: red;">studying</span>, you should be able to:</p>
+
+  <ul>
+    <li>Describe the meaning of immutability and identity in your own words.</li>
+    <li>Describe, in your own words, the binary operation prcedence in mathematical computations.</li>
+    <li>Use basic arithmetics for scientific computation in python.</li>
+    <li>Use strings and lists with indexing and slicing</li>
+  </ul>
+
+  <h1>The Why Section</h1>
+
+  <ul>
+    <li>If you assign a single value (data) to two variables <code>a</code> and <code>b</code> and you reassign a new value to <code>a</code>, will the value of <code>b</code> also change?</li>
+    <li>Consider the following mathematical computation.</li>
+  </ul>
+
+  \[
+  x = 3
+  \]
+  \[
+  y = 5
+  \]
+  \[
+  \frac{x + y}{2}=4
+  \]
+
+  <ul>
+    <li>If we program this computation, it may be something like this.</li>
+  </ul>
+
+  <pre><code class="language-python">x = 3
+y = 5
+x + y/2</code></pre>
+
+  <ul>
+    <li>The output of this program is shown below</li>
+  </ul>
+
+  <pre><code class="language-python">5.5</code></pre>
+
+  <ul>
+    <li>The outcome is not as per the expectation.</li>
+    <li>Why the result of our computation is wrong?</li>
+    <li>Is there any hierarchy of arithmetic operations in python?</li>
+    <li>If yes,what is the hierarchy of using arithmetic operations?</li>
+    <li>Sometimes, we have to work with some part of a string or some defined values in a list of numbers.</li>
+    <li>How to work with parts of strings and lists?</li>
+    <li>We answer these questions shortly.</li>
+  </ul>
+
+  <h1>Immutability and Identity</h1>
+
+  <ul>
+    <li>Once a python variable is defined (assigned with some data), its value cannot be changed unless reassigned with some other value.</li>
+  </ul>
+
+  <pre><code class="language-python">x = -5
+y = x</code></pre>
+
+  <ul>
+    <li>This code assigns a value of <code>-5</code> to <code>x</code> and <code>y</code>.</li>
+    <li>Next, we reassign the a value to <code>x</code> as shown below.</li>
+  </ul>
+
+  <pre><code class="language-python">x = 13</code></pre>
+
+  <ul>
+    <li>Will this reassignment change the value of <code>y</code> also?</li>
+    <li>The value of <code>y</code> will not chage.</li>
+    <li>Before reassignment of <code>x</code>, the location addresses of <code>x</code> and <code>y</code> are the same.</li>
+    <li>After reassignment of <code>x</code>, the location addresses of <code>x</code> and <code>y</code> become different.</li>
+    <li>See the <a href="../programs/immutability.py">program</a> on the location addresses of both variables before and after reassignment of <code>x</code>.</li>
+    <li>It means, python objects are immutable.</li>
+    <li>Python objects don’t change once created, however, variable names may be reassigned to refer to a different object.</li>
+  </ul>
+
+  <figure class="figure">
+    <img src="./immutability.png" alt="immutability">
+    <figcaption><strong>Figure 1.</strong> Immutability of Python variables.</figcaption>
+  </figure>
+
+  <h1>Basic Arithmetics</h1>
+
+  <h2>Operators in Python</h2>
+
+  <table>
+  <caption><strong>Table 1.</strong> Arithmetic Operators in Python</caption>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+      <th>Elaboration</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>+</code></td>
+      <td>Addition</td>
+      <td>Addition of numbers</td>
+      <td><code>2 + 3</code></td>
+    </tr>
+    <tr>
+      <td><code>-</code></td>
+      <td>Subtraction</td>
+      <td>Subtraction of numbers</td>
+      <td><code>2 - 3</code></td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Multiplication</td>
+      <td>Multiplication of numbers</td>
+      <td><code>2 * 3</code></td>
+    </tr>
+    <tr>
+      <td><code>/</code></td>
+      <td>Division</td>
+      <td>Division of numbers</td>
+      <td><code>3 / 2</code></td>
+    </tr>
+    <tr>
+      <td><code>//</code></td>
+      <td>Integer Division</td>
+      <td>Division to nearest smallest integer</td>
+      <td><code>3 // 2</code></td>
+    </tr>
+    <tr>
+      <td><code>%</code></td>
+      <td>Modulus</td>
+      <td>Remainder of division</td>
+      <td><code>18 % 4</code></td>
+    </tr>
+    <tr>
+      <td><code>**</code></td>
+      <td>Exponentiation</td>
+      <td>Exponentiation of numbers</td>
+      <td><code>5 ** 3</code></td>
+    </tr>
+  </tbody>
+</table>
+
+  <ul>
+    <li>The practice is mandatory for every binary operation.</li>
+  </ul>
+
+  <h2>Operator Precedence</h2>
+
+  <table>
+  <caption><strong>Table 2.</strong> Operator precedence in Python</caption>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Precedence</th>
+      <th>Method of Evaluation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>**</code></td>
+      <td>Highest precedence</td>
+      <td>Evaluated from right to left</td>
+    </tr>
+    <tr>
+      <td><code>*, /, //, %</code></td>
+      <td>Second precedence</td>
+      <td>Evaluated from left to right</td>
+    </tr>
+    <tr>
+      <td><code>+, -</code></td>
+      <td>Lowest precedence</td>
+      <td>Evaluated from left to right</td>
+    </tr>
+  </tbody>
+</table>
+
+  <ul>
+  <li>The precedence is overridden by the use of paranthesis.</li>
+  <li>The computation in the why section can be accompished as follows.</li>
+</ul>
+
+  <pre><code class="language-python">(x + y)/2</code></pre>
+
+  <ul>
+  <li>Always be careful in your computations and the best way to learn is to practice by writing as many programs as possible.</li>
+</ul>
+
+  <h1>Strings</h1>
+
+  <ul>
+  <li>A string is any text on which mathematical operations are invalid.</li>
+  <li>Although we learnt printing to standard output display using f-string, however, if we have strings only, we can also print them withoug assigning them to a variable using the following code.</li>
+</ul>
+
+  <pre><code class="language-python">print("My name is Aamir Alaud Din.")</code></pre>
+
+  <ul>
+  <li>If a string is required several times in a program it should be assigned to a variable as shown below.</li>
+</ul>
+
+  <pre><code class="language-python">name = "My name is Aamir Alaud Din."
+print(f'\{name:s\}')</code></pre>
+
+  <ul>
+    <li>The output of the above code is shown below.</li>
+  </ul>
+
+  <pre><code>My name is Aamir Alaud Din.</code></pre>
+
+  <ul>
+    <li>Note that the string variable has a length of twenty seven character (including spaces and period).</li>
+    <li>In f-string, if five blank spaces are reserved for printing of this twenty seven characters long string variable <code>name</code>, python will automatically reserve twenty seven spaces for the printing of <code>name</code>.</li>
+    <li>By default, python automatically reserves the blank spaces equal to the length of the string in cases when blank spaces reserved by the user are lesser than the length of the string (overrides user defined blank spaces).</li>
+    <li>However, if the user reserves more blank spaces than the length of the string to be printed, the user determined blank spaces are accepted by python.</li>
+    <li>Sometimes it is necessary to print a specified portion of a string, for example, we want to print the name <code>Aamir Alaud Din</code> from the vairable <code>name</code>.</li>
+    <li>It can be achieved by using the indexing and slicing of strings.</li>
+    <li>Now, we learn the indexing and slicing of strings.</li>
+    <li>Python automatically assigns indices (forward and backward indices) to strings.</li>
+    <li>We can use the indices to print a specified part of the string.</li>
+    <li>The assignment of indices to strings is shown below.</li>
+  </ul>
+
+  <figure class="figure">
+  <img src="./indexing.png" alt="indexing">
+  <figcaption><strong>Figure 2.</strong> Forward and backward indexing of strings in Python.</figcaption>
+  </figure>
+
+  <ul>
+  <li>The printing of text <code>Aamir</code> using indices is shown below.</li>
+  </ul>
+
+  <pre><code class="language-python">name = "Aamir Alaud Din"
+print(f"{name[0:5]:5s}")
+print(f"{name[-15:-10]:5s}")</code></pre>
+
+  <ul>
+<li>The output of the code is shown below.</li>
+</ul>
+
+  <pre><code>Aamir
+Aamir</code></pre>
+
+  <ul>
+    <li>Python always drops the last index of the string while selecting the required text.</li>
+    <li>As, strings are always enclosed within quotes, any nmumber within quotes will also be processed as string by python.</li>
+    <li>For example the assinment of <code>"299792458"</code> to <code>light_speed</code> is not integer, but a string.</li>
+    <li>Arithmetic operations of addition and multiplication are valid on string but the result is not a number but a string.</li>
+    <li>Arithmetic operations of subtraction and division are invalid on strings and such operations pop up error message.</li>
+    <li>It is time to practice the strings indexing and slicing.</li>
+  </ul>
+
+  <h1>Lists</h1>
+
+  <h2>Definition</h2>
+
+  <p><strong>A list is a collection of data/variables enclosed within square brackets called elements of the list. The elements are separated by commas and indices are assigned to list elements by python. The list elements may be of same or different data types.</strong></p>
+
+  <ul>
+    <li>The lists must be assinged to a variable.</li>
+    <li>The code to initialize a list is show below.</li>
+  </ul>
+
+  <pre><code class="language-python">client_data = ["Aamir", 235614, "Shahzad", 854265, "Yasir", 125498]</code></pre>
+
+  <ul>
+    <li>The indexing of list elements is shown in figure below.</li>
+  </ul>
+
+  <figure class="figure">
+  <img src="./list_indexing.png" alt="list_indexing">
+  <figcaption><strong>Figure 3.</strong> Forward and backward indexing of list elements.</figcaption>
+</figure>
+
+  <ul>
+  <li>The rules for indexing and slicing of lists are exactly the same as those of strings.</li>
+  <li>However, for <code>str</code> type elements, another square bracket for indexing and slicing of string is added next to square bracket of list indexing/slicing.</li>
+  <li>Now, we understand list indexing/slicing, printing in scientific notation, python preferred notation, and string element manipulation.</li>
+</ul>
+
+  <h1>Summary</h1>
+
+  <ul>
+  <li>Arithmetic operations are valid on <code>int</code> and <code>float</code> data in the hierarchical manner.</li>
+  <li>Python objects are immutable, however, the data assigned to the variable can be reassigned to the variables.</li>
+  <li>Python assigns indices to strings and string manipulation is achieved through string indexing/slicing.</li>
+  <li>A list is a collection of data/variable enclosed with square brackets.</li>
+  <li>The entries of list are called list elements.</li>
+  <li>List elements are separated by commas and can/cannot be of same data type.</li>
+  <li>A list can be printed completely by using <code>print</code> function.</li>
+  <li>Python assigns indices to list elements.</li>
+  <li>List manipulation is possible through list indexing/slicing.</li>
+  <li>If a list element is a string, this string can be manipulated by using a indexing/slicing just after the indexing/slicing of list.</li>
+  <li>Python allows to print data in many formats and a format is always selected based on the requirement.</li>
+  <li>If any question arises in mind regarding printing, the best way is to test it in python and in case of bugs, literature must be consulted.</li>
+</ul>
+
+  <h1>Exercises</h1>
+
+  <h2>Exercise 1</h2>
+  <p>Predict the output of the following lines of code.</p>
+
+  <ol>
+    <li><code>3 + 4 * 2</code></li>
+    <li><code>3 + 4 * 2</code></li>
+    <li><code>2 + 3 ** 2 / 3</code></li>
+    <li><code>2 + 3 * 4</code></li>
+    <li><pre><code class="language-python">x = 25
+y = 7
+print(x // y + x % y)</code></pre></li>
+  </ol>
+
+  <h2>Exercise 2</h2>
+
+  <p>Assume <code>name = "Python Programming"</code></p>
+
+  <ol>
+    <li>Get the first and last character of <code>text</code></li>
+    <li>Extract the word <code>Programming</code></li>
+    <li>Print every second character from <code>Python</code></li>
+    <li>Reverse the entire string.</li>
+    <li>Get substring <code>thon</code>.</li>
+  </ol>
+
+  <h2>Exercise 3</h2>
+
+  <p>Assume <code>nums = [10, 20, 30, 40, 50, 60]</code></p>
+
+  <ol>
+    <li>Access the second and fifth elements.</li>
+    <li>Slice the middle three numbers.</li>
+    <li>Get the last three numbers using negative indexing.</li>
+    <li>Reverse the list using slicing.</li>
+    <li>Replace the second and third elements with <code>[25, 35]</code></li>
+  </ol>
+
+</body>
+</html>
+

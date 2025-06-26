@@ -1,0 +1,147 @@
+/* General Page Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  margin: 60px;
+  background-color: #fff;
+  color: #333;
+  font-size: 2.8em;
+  text-align: justify;
+}
+
+/* Title Block */
+.title-block {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.title-block .title {
+  font-size: 2.0em;
+  font-weight: bold;
+}
+.title-block .subtitle {
+  font-size: 1.5em;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.title-block .instructor,
+.title-block .date {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Heading Level 1 in Light Blue Box with Red Bar */
+h1 {
+  background-color: #c4e6ff;
+  border-left: 20px solid red;
+  padding: 10px 20px;
+  margin-top: 40px;
+  font-size: 1.5em;
+}
+
+/* Headings Level 2 & 3 in Blue */
+h2, h3 {
+  color: #004080;
+  margin-top: 30px;
+  font-size: 1.2em;
+}
+
+/* Inline Code */
+code {
+  background-color: #d6d6d6;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+  font-size: 0.95em;
+}
+
+
+/* Base styles for code blocks */
+pre code {
+  display: block;
+  padding: 1em;
+  background: #d6d6d6;
+  border-radius: 5px;
+  font-family: Consolas, monospace;
+  font-size: 1.0em;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+/* Highlight.js theme customization for Python */
+.hljs {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.hljs-keyword {
+  color: #0000ff;
+  font-weight: bold;
+}
+
+.hljs-string {
+  color: #a31515;
+}
+
+.hljs-number {
+  color: #098658;
+}
+
+.hljs-comment {
+  color: #008000;
+  font-style: italic;
+}
+
+.hljs-function {
+  color: #795e26;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-operator {
+  color: #333;
+}
+
+.hljs-title {
+  color: #795e26;
+  font-weight: bold;
+}
+
+/* Image with Caption */
+.figure {
+  text-align: center;
+  margin: 20px auto;
+  width: 100%;
+}
+.figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.figure figcaption {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Banded Table with Caption */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
